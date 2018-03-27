@@ -357,7 +357,8 @@ class _File(_BaseResource):
             sub_file.download(dest, delete_after_download, chunk_size)
 
         if delete_after_download:
-            self.delete()
+			logging.warning('not deleting directory' % (filepath, crc32, self.crc32))
+            #self.delete() #dont delete directories even when true
 
     def _verify_file(self, filepath):
         logger.info('verifying crc32...')
